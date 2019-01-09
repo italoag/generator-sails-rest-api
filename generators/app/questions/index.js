@@ -1,22 +1,18 @@
-/**
- * Exports object contains questions divided into sections.
- * Each section should contain array with questions.
- * Array with questions it's Inquirer prompts objects - https://github.com/SBoudrias/Inquirer.js#prompts-type
- *
- * @example
- * module.exports = {
- *      sectionName: require('./sectionName'),
- *      anotherSection: [{
- *          type: 'input',
- *          name: 'application-name',
- *          message: 'Typo your application name',
- *          default: 'sails-rest-api'
- *      }]
- * };
- */
+"use strict";
 
 module.exports = {
-  application: require('./application'),
-  database: require('./database'),
-  services: require('./services')
+  adapter: require('./adapter'),
+  app: require('./app'),
+  authentication: require('./authentication'),
+  blueprint: require('./blueprint'),
+  config: require('./config'),
+  controller: require('./controller'),
+  cron: require('./cron'),
+  hook: require('./hook'),
+  logger: require('./logger'),
+  model: require('./model'),
+  policy: require('./policy'),
+  response: require('./response'),
+  service: require('./service'),
+  swagger: require('./swagger')
 };

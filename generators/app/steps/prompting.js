@@ -1,48 +1,62 @@
+"use strict";
+
 /**
  * Step 2
  * Where you prompt users for options (where you'd call this.prompt()).
- *
- * Questions is required from ../questions folder.
- * Each of answers is mixin to this.answers attribute and available in templates as answers variable.
  */
 
-var chalk = require('chalk');
-var assign = require('../util').assign;
-var questions = require('../questions');
+const chalk = require('chalk');
+const questions = require('../questions');
 
-/**
- * Triggers when user finishes answering to questions from section
- * @param {Function} done
- * @param {Object} answers
- * @private
- */
-function _onSectionDone(done, answers) {
-  this.answers = assign(this.answers, answers);
-  done();
+function askQuestions(title, questions, done) {
+  this.log(chalk.yellow(`\n${title} questions:`));
+
+  return this
+    .prompt(questions)
+    .then(answers => {
+      this.answers = Object.assign(this.answers || {}, answers);
+      done();
+    });
 }
 
 module.exports = {
-  /**
-   * Ask database questions
-   */
-  askDatabaseQuestions: function () {
-    this.log(chalk.yellow('\nDatabase questions:'));
-    this.prompt(questions.database, _onSectionDone.bind(this, this.async()));
+  askApp: function () {
+    askQuestions.call(this, 'Application', questions.app, this.async());
   },
 
-  /**
-   * Ask application questions
-   */
-  askApplicationQuestions: function () {
-    this.log(chalk.yellow('\nApplication questions:'));
-    this.prompt(questions.application, _onSectionDone.bind(this, this.async()));
+  askConfig: function () {
+    askQuestions.call(this, 'Configuration', questions.config, this.async());
   },
 
-  /**
-   * Ask services questions
-   */
-  askServiceQuestions: function () {
-    this.log(chalk.yellow('\nService questions:'));
-    this.prompt(questions.services, _onSectionDone.bind(this, this.async()));
+  askLogger: function () {
+    askQuestions.call(this, 'Logger', questions.logger, this.async());
+  },
+
+  askBlueprint: function () {
+    askQuestions.call(this, 'Blueprint', questions.blueprint, this.async());
+  },
+
+  askController: function () {
+    askQuestions.call(this, 'Controller', questions.controller, this.async());
+  },
+
+  askHook: function () {
+    askQuestions.call(this, 'Hook', questions.hook, this.async());
+  },
+
+  askCron: function () {
+    askQuestions.call(this, 'Cron', questions.cron, this.async());
+  },
+
+  askSwagger: function () {
+    askQuestions.call(this, 'Swagger', questions.swagger, this.async());
+  },
+
+  askAuthentication: function () {
+    askQuestions.call(this, 'Authentication', questions.authentication, this.async());
+  },
+
+  askService: function () {
+    askQuestions.call(this, 'Service', questions.service, this.async());
   }
 };

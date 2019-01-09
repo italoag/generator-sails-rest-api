@@ -1,25 +1,23 @@
+"use strict";
+
 /**
- * Exports object contains options names and their configuration objects
+ * Exports object that contains names of options as a key and their configuration objects as a value
  *
  * @example
  * module.exports = {
- *      'option-name': {
- *          desc: 'Option description',
- *          type: Boolean || String || Number,
- *          defaults: false,
- *          hide: false
- *      }
+ *   optionName: {
+ *     desc: 'Description for the option',
+ *     alias: 'Short name for the option',
+ *     type: Boolean || String || Number,
+ *     defaults: 'Default value',
+ *     hide: false
+ *   }
  * };
  */
+
 module.exports = {
-  'skip-check-update': {
-    desc: 'Do not check for generator updates',
-    type: Boolean,
-    defaults: false,
-    hide: false
-  },
-  'skip-install': {
-    desc: 'Do not install npm dependencies',
+  'skip-update': {
+    desc: `Do not check for generator\'s updates`,
     type: Boolean,
     defaults: false,
     hide: false

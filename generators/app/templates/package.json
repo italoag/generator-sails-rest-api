@@ -1,23 +1,24 @@
 {
-  "name": "<%= answers['application:name'] %>",
+  "name": "<%= answers['app:name'] %>",
   "version": "0.1.0",
   "main": "app.js",
   "dependencies": {
-    "sails-hook-cron": "*"
+    "rc": "1.1.6",
+    "sails": "0.12.14"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "istanbul": "^0.3.17",
-    "mocha": "^2.2.5",
-    "sails-memory": "^0.10.5",
-    "sinon": "^1.15.4",
-    "supertest": "^1.0.1"
+    "esdoc": "0.4.3",
+    "chai": "3.4.1",
+    "istanbul": "0.4.2",
+    "mocha": "2.3.4",
+    "sails-memory": "0.10.5",
+    "sinon": "1.17.2"
   },
   "scripts": {
-    "start": "node app.js",
+    "clean": "rm -rf ./.tmp",
     "debug": "node debug app.js",
-    "test": "istanbul cover _mocha",
-    "console": "sails console",
-    "clean": "rm -rf ./.tmp"
+    "docs": "esdoc -c esdoc.json",
+    "start": "node app.js",
+    "test": "istanbul cover _mocha"
   }
 }
